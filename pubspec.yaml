@@ -1,0 +1,46 @@
+name: chess_arena_genetom
+description: "Chess Arena — play chess vs smart offline bots with adaptive difficulty, ELO rating and contextual chat."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Core chess rules + board engine (move legality, game-over detection).
+  genetom_chess_engine: ^0.0.4
+  # Offline storage for profile, ELO and game history.
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  # Bot identity: flags + avatars.
+  country_pickers: ^3.0.1
+  random_avatar: ^0.0.8
+  # Chat replies: pure heuristic engine (no native ML dependencies).
+  # google_mlkit_smart_reply removed — replaced by HeuristicReplyEngine.
+  # Preview the app on different devices/locales (debug builds only).
+  device_preview: ^1.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/chess/pieces/
+    - new pieces/
+    # Flutter bundles files directly inside a listed directory only — the
+    # marble piece art lives one level deeper, so each colour set must be
+    # listed explicitly or the assets are silently dropped (glyph fallback).
+    - new pieces/new white/
+    - new pieces/new black/
+    - timecontrol/
+    - assets/ui/
+    - assets/images/home/
+    - assets/navbar/active/
+    - assets/navbar/inactive/
+    - navbar/active/
+    - navbar/inactive/
